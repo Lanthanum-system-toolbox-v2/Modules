@@ -2,7 +2,7 @@
 class=cpua
 !view
 view=title
-text=高通GPU调度配置
+text=高通GPU POPP机制设置
 @show
 echo true
 @show
@@ -10,7 +10,15 @@ echo true
 
 !view
 view=subtitle
-text=调整高通GPU调度的激进程度
+text=原来写的是调整调度激进程度，但是那是不准确的。POPP其实是一堆早应该被移除的冗余代码，它们是为早期的adreno gpu降低功耗用的。现在我们的gpu有了调整器，已经可以很正常的管理功耗与频率，popp就是个多余的东西。但是，调整它至少是提高gpu的最低频率的一种方法。
+@show
+echo true
+@show
+!view
+
+!view
+view=subtitle
+text=GPU POPP默认功耗等级调整：
 @show
 echo true
 @show
@@ -18,7 +26,7 @@ echo true
 
 !view
 view=seekbar
-text=《——保守\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s激进——》
+text=《——低频\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s\s高频——》
 @max
 cat /sys/class/kgsl/kgsl-3d0/min_pwrlevel
 @max
