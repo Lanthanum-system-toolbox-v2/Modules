@@ -52,7 +52,7 @@ settings put global transition_animation_scale $edittext
 root=true
 core=true
 view=edittext
-text=Animation duration adjustment procedure
+text=Animation duration
 @show
 echo true
 @show
