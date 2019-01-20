@@ -36,6 +36,25 @@ echo $edittext > /dev/stune/background/schedtune.boost
 !view
 
 !view
+view=switch
+text=后台任务：请求低延迟
+@show
+if [ -e /dev/stune/background/schedtune.prefer_idle ]
+then
+echo true
+fi
+@show
+root=true
+core=true
+@click
+echo $switch > /dev/stune/background/schedtune.prefer_idle
+@click
+@current
+cat /dev/stune/background/schedtune.prefer_idle
+@current
+!view
+
+!view
 view=edittext
 text=Foreground jobs：
 root=true
@@ -55,6 +74,24 @@ echo $edittext > /dev/stune/foreground/schedtune.boost
 @done
 !view
 
+!view
+view=switch
+text=前台任务：请求低延迟
+@show
+if [ -e /dev/stune/foreground/schedtune.prefer_idle ]
+then
+echo true
+fi
+@show
+root=true
+core=true
+@click
+echo $switch > /dev/stune/foreground/schedtune.prefer_idle
+@click
+@current
+cat /dev/stune/foreground/schedtune.prefer_idle
+@current
+!view
 
 !view
 view=edittext
@@ -74,6 +111,64 @@ cat /dev/stune/top-app/schedtune.boost
 chmod 644 /dev/stune/top-app/schedtune.boost
 echo $edittext > /dev/stune/top-app/schedtune.boost
 @done
+!view
+
+!view
+view=switch
+text=当前界面任务：请求低延迟
+@show
+if [ -e /dev/stune/top-app/schedtune.prefer_idle ]
+then
+echo true
+fi
+@show
+root=true
+core=true
+@click
+echo $switch > /dev/stune/top-app/schedtune.prefer_idle
+@click
+@current
+cat /dev/stune/top-app/schedtune.prefer_idle
+@current
+!view
+
+!view
+view=edittext
+text=rt任务激进程度：
+root=true
+@show
+if [ -e /dev/stune/rt/schedtune.boost ]
+then
+echo true
+fi
+@show
+core=true
+@current
+cat /dev/stune/rt/schedtune.boost
+@current
+@done
+chmod 644 /dev/stune/top-app/schedtune.boost
+echo $edittext > /dev/stune/top-app/schedtune.boost
+@done
+!view
+
+!view
+view=switch
+text=rt任务：请求低延迟
+@show
+if [ -e /dev/stune/rt/schedtune.prefer_idle ]
+then
+echo true
+fi
+@show
+root=true
+core=true
+@click
+echo $switch > /dev/stune/rt/schedtune.prefer_idle
+@click
+@current
+cat /dev/stune/rt/schedtune.prefer_idle
+@current
 !view
 
 !module

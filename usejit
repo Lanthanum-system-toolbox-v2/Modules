@@ -1,0 +1,46 @@
+!module
+class=extra
+!view
+view=title
+text=JIT及时编译（高度实验性）
+@show
+if [ `getprop ro.build.version.sdk` -gt 23 ]
+then
+echo true
+fi
+@show
+core=true
+!view
+
+!view
+view=subtitle
+text=切换JIT及时编译的状态。开启它，则在运行应用时会将及时编译的代码进行保存，从而持续提高应用的运行性能。并且，此项设置将不会在开机时被应用。
+@show
+echo true
+@show
+!view
+
+!view
+view=switch
+text=启用
+@show
+echo true
+@show
+root=true
+@click
+stop
+if [ $switch == 1 ]
+then
+setprop dalvik.vm.usejit true
+else
+setprop dalvik.vm.usejit false
+fi
+start
+@click
+@current
+getprop dalvik.vm.usejit
+@current
+
+!view
+
+!module
