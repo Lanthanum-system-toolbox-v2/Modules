@@ -1,0 +1,73 @@
+!module
+class=cpua
+!view
+view=title
+text=熄屏处理器降频配置
+@show
+echo true
+@show
+!view
+!view
+view=subtitle
+text=在屏幕熄灭后限制处理器频率
+@show
+echo true
+@show
+!view
+
+!view
+view=edittext
+text=小核集群：
+root=true
+@show
+if [ -e /sys/module/cpufreq/parameters/cluster_0_ucfreq ]
+then
+echo true
+fi
+@show
+core=true
+@current
+cat /sys/module/cpufreq/parameters/cluster_0_ucfreq
+@current
+@done
+echo $edittext > /sys/module/cpufreq/parameters/cluster_0_ucfreq
+@done
+!view
+
+!view
+view=edittext
+text=大核集群：
+root=true
+@show
+if [ -e /sys/module/cpufreq/parameters/cluster_1_ucfreq ]
+then
+echo true
+fi
+@show
+core=true
+@current
+cat /sys/module/cpufreq/parameters/cluster_1_ucfreq
+@current
+@done
+echo $edittext > /sys/module/cpufreq/parameters/cluster_1_ucfreq
+@done
+!view
+
+!view
+view=edittext
+text=巨核集群：
+root=true
+@show
+if [ -e /sys/module/cpufreq/parameters/cluster_2_ucfreq ]
+then
+echo true
+fi
+@show
+core=true
+@current
+cat /sys/module/cpufreq/parameters/cluster_2_ucfreq
+@current
+@done
+echo $edittext > /sys/module/cpufreq/parameters/cluster_2_ucfreq
+@done
+!view
