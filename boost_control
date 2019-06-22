@@ -165,4 +165,23 @@ fi
 root=true
 !view
 
+!view
+view=edittext
+@current
+cat /sys/module/boost_control/parameters/lmk_boost_ms
+@current
+text=杀进程时升频时间(ms)：
+@done
+echo $edittext > /sys/module/boost_control/parameters/lmk_boost_ms
+@done
+core=true
+@show
+if [ -e /sys/module/boost_control/parameters/lmk_boost_ms ]
+then
+echo true
+fi
+@show
+root=true
+!view
+
 !module
