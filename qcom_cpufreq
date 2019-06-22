@@ -1,0 +1,65 @@
+!module
+class=cpua
+
+!view
+view=title
+text=qcom_cpufreq控制
+@show
+echo true
+@show
+!view
+
+!view
+view=subtitle
+text=高通处理器频率相关控制
+@show
+echo true
+@show
+!view
+
+!view
+view=edittext
+root=true
+core=true
+text=处理器频率刷新间隔(ns)：
+@show
+if [ -e /sys/module/qcom_cpufreq/parameters/freq_update_delta ]
+then
+echo true
+fi
+@show
+
+@current
+cat /sys/module/qcom_cpufreq/parameters/freq_update_delta
+@current
+
+@done
+echo $edittext > /sys/module/qcom_cpufreq/parameters/freq_update_delta
+@done
+
+!view
+
+!view
+view=edittext
+root=true
+core=true
+text=处理器频率刷新可优化延迟(ns)：
+@show
+if [ -e /sys/module/qcom_cpufreq/parameters/freq_update_delay ]
+then
+echo true
+fi
+@show
+
+@current
+cat /sys/module/qcom_cpufreq/parameters/freq_update_delay
+@current
+
+@done
+echo $edittext > /sys/module/qcom_cpufreq/parameters/freq_update_delay
+@done
+
+!view
+
+
+!module
