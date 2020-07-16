@@ -41,15 +41,6 @@ echo label=`getprop pm.dexopt.install`
 @current
 @done
 setprop pm.dexopt.install $label
-
-cache="/data/build.cache.prop"
-target="/system/build.prop"
-mount -o rw,remount /system
-sed '/pm.dexopt.install=/'d $target > $cache
-cp $cache $target
-echo "pm.dexopt.install=$label" >> $target
-rm -f $cache
-mount -o ro,remount /system
 @done
 !view
 
@@ -70,15 +61,6 @@ echo label=`getprop pm.dexopt.install`
 @current
 @done
 setprop pm.dexopt.install $label
-
-cache="/data/build.cache.prop"
-target="/system/build.prop"
-mount -o rw,remount /system
-sed '/pm.dexopt.install=/'d $target > $cache
-cp $cache $target
-echo "pm.dexopt.install=$label" >> $target
-rm -f $cache
-mount -o ro,remount /system
 @done
 !view
 
@@ -99,15 +81,6 @@ echo label=`getprop pm.dexopt.bg-dexopt`
 @current
 @done
 setprop pm.dexopt.bg-dexopt $label
-
-cache="/data/build.cache.prop"
-target="/system/build.prop"
-mount -o rw,remount /system
-sed '/pm.dexopt.bg-dexopt=/'d $target > $cache
-cp $cache $target
-echo "pm.dexopt.bg-dexopt=$label" >> $target
-rm -f $cache
-mount -o ro,remount /system
 @done
 !view
 
@@ -128,15 +101,6 @@ echo label=`getprop pm.dexopt.bg-dexopt`
 @current
 @done
 setprop pm.dexopt.bg-dexopt $label
-
-cache="/data/build.cache.prop"
-target="/system/build.prop"
-mount -o rw,remount /system
-sed '/pm.dexopt.bg-dexopt=/'d $target > $cache
-cp $cache $target
-echo "pm.dexopt.bg-dexopt=$label" >> $target
-rm -f $cache
-mount -o ro,remount /system
 @done
 !view
 
