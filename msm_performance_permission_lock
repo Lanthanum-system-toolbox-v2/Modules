@@ -1,0 +1,51 @@
+!module
+class=cpua
+
+!view
+view=title
+text=禁用msm_performance的升频
+@show
+echo true
+@show
+!view
+
+!view
+view=subtitle
+text=这将阻止Powerhal通过msm_performance驱动执行的升频操作。\n包括：滑动升频、启动应用时升频。（以op8为例）
+@show
+echo true
+@show
+!view
+
+!view
+view=switch
+text=禁用升频
+@show
+if [ -e /sys/module/msm_performance/parameters/cpu_min_freq ]
+then
+echo true
+fi
+@show
+
+@current
+if [ `stat -c%a /sys/module/msm_performance/parameters/cpu_min_freq` == 444 ]
+then
+echo true
+fi
+@current
+
+@click
+if [ $switch == 1 ]
+then
+chmod 444 /sys/module/msm_performance/parameters/cpu_min_freq
+else
+chmod 644 /sys/module/msm_performance/parameters/cpu_min_freq
+fi
+@click
+
+core=true
+root=true
+
+!view
+
+!module
