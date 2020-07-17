@@ -129,12 +129,12 @@ fi
 @done
 cache="/data/build.cache.prop"
 target="/system/build.prop"
-mount -o rw,remount /system
+$mount_system_rw
 sed '/pm.dexopt.boot=/'d $target > $cache
 cp $cache $target
 echo "pm.dexopt.boot=$label" >> $target
 rm -f $cache
-mount -o ro,remount /system
+$mount_system_ro
 @done
 !view
 
@@ -163,12 +163,12 @@ fi
 @done
 cache="/data/build.cache.prop"
 target="/system/build.prop"
-mount -o rw,remount /system
+$mount_system_rw
 sed '/pm.dexopt.boot=/'d $target > $cache
 cp $cache $target
 echo "pm.dexopt.boot=$label" >> $target
 rm -f $cache
-mount -o ro,remount /system
+$mount_system_ro
 @done
 !view
 
@@ -197,12 +197,12 @@ fi
 @done
 cache="/data/build.cache.prop"
 target="/system/build.prop"
-mount -o rw,remount /system
+$mount_system_rw
 sed '/pm.dexopt.first-boot=/'d $target > $cache
 cp $cache $target
 echo "pm.dexopt.first-boot=$label" >> $target
 rm -f $cache
-mount -o ro,remount /system
+$mount_system_ro
 @done
 !view
 
@@ -231,12 +231,12 @@ fi
 @done
 cache="/data/build.cache.prop"
 target="/system/build.prop"
-mount -o rw,remount /system
+$mount_system_rw
 sed '/pm.dexopt.first-boot=/'d $target > $cache
 cp $cache $target
 echo "pm.dexopt.first-boot=$label" >> $target
 rm -f $cache
-mount -o ro,remount /system
+$mount_system_ro
 @done
 !view
 
