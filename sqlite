@@ -1,0 +1,197 @@
+!module
+class=extra
+!view
+view=title
+text=Sqlite性能配置
+@show
+echo true
+@show
+!view
+
+!view
+view=subtitle
+text=配置Sqlite数据库的相关性能参数。某些性能配置可以使相关跑分提高，但是会对稳定性产生影响。
+@show
+echo true
+@show
+!view
+
+!view
+view=subtitle
+text=非WAL模式下的相关参数：
+@show
+echo true
+@show
+!view
+
+!view
+view=spinner
+core=true
+root=true
+text=日志模式：
+item=TRUNCATE|OFF|DELETE|PERSIST|MEMORY
+@show
+echo true
+@show
+@current
+echo label=`getprop debug.sqlite.journalmode`
+@current
+@done
+setprop debug.sqlite.journalmode $label
+@done
+!view
+
+!view
+view=edittext
+text=日志尺寸限制：
+@show
+echo true
+@show
+root=true
+core=true
+@current
+s=`getprop debug.sqlite.journalsizelimit`
+if [ "$s" == "" ]
+then
+echo 524288
+else
+echo $s
+fi
+@current
+@done
+setprop debug.sqlite.journalsizelimit $edittext
+@done
+!view
+
+!view
+view=spinner
+core=true
+root=true
+text=同步模式：
+item=FULL|NORMAL|OFF
+@show
+echo true
+@show
+@current
+echo label=`getprop debug.sqlite.syncmode`
+@current
+@done
+setprop debug.sqlite.syncmode $label
+@done
+!view
+
+!view
+view=subtitle
+text=WAL模式下的相关参数：
+@show
+echo true
+@show
+!view
+
+!view
+view=spinner
+core=true
+root=true
+text=同步模式：
+item=NORMAL|FULL|OFF
+@show
+echo true
+@show
+@current
+echo label=`getprop debug.sqlite.wal.syncmode`
+@current
+@done
+setprop debug.sqlite.wal.syncmode $label
+@done
+!view
+
+!view
+view=edittext
+text=自动检查点：
+@show
+echo true
+@show
+root=true
+core=true
+@current
+s=`getprop debug.sqlite.wal.autocheckpoint`
+if [ "$s" == "" ]
+then
+echo 100
+else
+echo $s
+fi
+@current
+@done
+setprop debug.sqlite.wal.autocheckpoint $edittext
+@done
+!view
+
+!view
+view=edittext
+text=最大连接数量：
+@show
+echo true
+@show
+root=true
+core=true
+@current
+s=`getprop debug.sqlite.wal.poolsize`
+if [ "$s" == "" ]
+then
+echo 4
+else
+echo $s
+fi
+@current
+@done
+setprop debug.sqlite.wal.poolsize $edittext
+@done
+!view
+
+!view
+view=edittext
+text=最大空闲时长：
+@show
+echo true
+@show
+root=true
+core=true
+@current
+s=`getprop debug.sqlite.idle_connection_timeout`
+if [ "$s" == "" ]
+then
+echo 30000
+else
+echo $s
+fi
+@current
+@done
+setprop debug.sqlite.idle_connection_timeout $edittext
+@done
+!view
+
+!view
+view=edittext
+text=最大连续数据库大小：
+@show
+echo true
+@show
+root=true
+core=true
+width=250
+@current
+s=`getprop debug.sqlite.wal.truncatesize`
+if [ "$s" == "" ]
+then
+echo 1048576
+else
+echo $s
+fi
+@current
+@done
+setprop debug.sqlite.wal.truncatesize $edittext
+@done
+!view
+
+!module
