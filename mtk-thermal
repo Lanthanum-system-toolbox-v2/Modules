@@ -52,7 +52,7 @@ fi
 
 @current
 @done
-mount -o rw,remount /system
+$mount_system_rw
 if [ $position == 0 ]
 then
 cp -rf -p /data/data/xzr.La.systemtoolbox/backups/thermal.conf /etc/.tp/thermal.conf
@@ -70,7 +70,7 @@ then
 cp -rf -p /data/data/xzr.La.systemtoolbox/backups/.ht120.mtc /etc/.tp/thermal.conf
 echo 2 > /data/data/xzr.La.systemtoolbox/config/mtk-thermal
 fi
-mount -o ro,remount /system
+$mount_system_ro
 echo @toast=切换温控完成，重启生效！
 @done
 !view
