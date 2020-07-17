@@ -41,7 +41,7 @@ fi
 
 @click
 t=/vendor/bin/thermal-engine
-mount -o rw,remount /system
+$mount_system_rw
 mount -o rw,remount /vendor
 if [ $switch == 1 ]
 then
@@ -49,7 +49,7 @@ chmod 755 $t
 else
 chmod 0 $t
 fi
-mount -o ro,remount /system
+$mount_system_ro
 mount -o ro,remount /vendor
 echo @ierror
 echo @toast=Refresh the page is recommended to check if succeed. Applied after reboot.

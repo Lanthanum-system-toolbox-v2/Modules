@@ -40,7 +40,7 @@ core=true
 root=true
 
 @click
-mount -o rw,remount /system
+$mount_system_rw
 mount -o rw,remount /vendor
 if [ $switch == 1 ]
 then
@@ -48,7 +48,7 @@ mv /system/vendor/etc/perf/perfboostsconfig.xml.bak /system/vendor/etc/perf/perf
 else
 mv /system/vendor/etc/perf/perfboostsconfig.xml /system/vendor/etc/perf/perfboostsconfig.xml.bak
 fi
-mount -o ro,remount /system
+$mount_system_ro
 mount -o ro,remount /vendor
 echo @toast=Refresh the page is recommended to check if succeed. Applied after reboot.
 echo @ierror
