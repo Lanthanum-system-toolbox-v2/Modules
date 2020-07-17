@@ -30,7 +30,7 @@ core=true
 @click
 cache="/data/build.cache.prop"
 target="/system/build.prop"
-mount -o rw,remount /system
+$mount_system_rw
 sed '/qemu.hw.mainkeys=/'d $target > $cache
 cp $cache $target
 if [ $switch == 1 ]
@@ -40,7 +40,7 @@ else
 echo "qemu.hw.mainkeys=1" >> $target
 fi
 rm -f $cache
-mount -o ro,remount /system
+$mount_system_ro
 echo "@toast=重启来应用！"
 @click
 
