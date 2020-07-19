@@ -194,4 +194,12 @@ setprop debug.sqlite.wal.truncatesize $edittext
 @done
 !view
 
+!view
+view=subtitle
+text=*将日志模式、同步模式均设置为OFF可在一定程度上用稳定性换取Sqlite跑分提高
+@show
+echo true
+@show
+!view
+
 !module
