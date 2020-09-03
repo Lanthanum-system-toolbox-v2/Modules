@@ -1,0 +1,209 @@
+!module
+class=extra
+!view
+view=title
+text=KCAL屏幕颜色调整
+@show
+echo true
+@show
+!view
+
+!view
+view=subtitle
+text=调校屏幕颜色
+@show
+echo true
+@show
+!view
+
+!view
+view=subtitle
+text=RGB调整：
+@show
+echo true
+@show
+!view
+
+!view
+view=seekbar
+text=《——淡\s\s\s\s\s\s\s红色\s\s\s\s\s\s\s\s\s浓——》
+@max
+echo 255
+@max
+@show
+if [ -e /sys/module/msm_drm/parameters/kcal_red ]
+then
+echo true
+fi
+@show
+@current
+cat /sys/module/msm_drm/parameters/kcal_red
+@current
+@done
+echo $seekbar > /sys/module/msm_drm/parameters/kcal_red
+@done
+core=true
+root=true
+!view
+
+!view
+view=seekbar
+text=《——淡\s\s\s\s\s\s\s绿色\s\s\s\s\s\s\s\s\s浓——》
+@max
+echo 255
+@max
+@show
+if [ -e /sys/module/msm_drm/parameters/kcal_green ]
+then
+echo true
+fi
+@show
+@current
+cat /sys/module/msm_drm/parameters/kcal_green
+@current
+@done
+echo $seekbar > /sys/module/msm_drm/parameters/kcal_green
+@done
+core=true
+root=true
+!view
+
+!view
+view=seekbar
+text=《——淡\s\s\s\s\s\s\s蓝色\s\s\s\s\s\s\s\s\s浓——》
+@max
+echo 255
+@max
+@show
+if [ -e /sys/module/msm_drm/parameters/kcal_blue ]
+then
+echo true
+fi
+@show
+@current
+cat /sys/module/msm_drm/parameters/kcal_blue
+@current
+@done
+echo $seekbar > /sys/module/msm_drm/parameters/kcal_blue
+@done
+core=true
+root=true
+!view
+
+!view
+view=subtitle
+text=杂项控制：
+@show
+echo true
+@show
+!view
+
+!view
+view=seekbar
+text=《——低\s\s\s\s\s\s\s饱和度\s\s\s\s\s\s\s\s\s高——》
+@max
+echo 383
+@max
+@show
+if [ -e /sys/module/msm_drm/parameters/kcal_sat ]
+then
+echo true
+fi
+@show
+@current
+cat /sys/module/msm_drm/parameters/kcal_sat
+@current
+@done
+echo $seekbar > /sys/module/msm_drm/parameters/kcal_sat
+@done
+core=true
+root=true
+!view
+
+!view
+view=seekbar
+text=《——低\s\s\s\s\s\s\s亮度\s\s\s\s\s\s\s\s\s高——》
+@max
+echo 383
+@max
+@show
+if [ -e /sys/module/msm_drm/parameters/kcal_val ]
+then
+echo true
+fi
+@show
+@current
+cat /sys/module/msm_drm/parameters/kcal_val
+@current
+@done
+echo $seekbar > /sys/module/msm_drm/parameters/kcal_val
+@done
+core=true
+root=true
+!view
+
+!view
+view=seekbar
+text=《——低\s\s\s\s\s\s\s对比度\s\s\s\s\s\s\s\s\s高——》
+@max
+echo 383
+@max
+@show
+if [ -e /sys/module/msm_drm/parameters/kcal_cont ]
+then
+echo true
+fi
+@show
+@current
+cat /sys/module/msm_drm/parameters/kcal_cont
+@current
+@done
+echo $seekbar > /sys/module/msm_drm/parameters/kcal_cont
+@done
+core=true
+root=true
+!view
+
+!view
+view=seekbar
+text=《——\s\s\s\s\s\s\s色调\s\s\s\s\s\s\s\s\s——》
+@max
+echo 1536
+@max
+@show
+if [ -e /sys/module/msm_drm/parameters/kcal_hue ]
+then
+echo true
+fi
+@show
+@current
+cat /sys/module/msm_drm/parameters/kcal_hue
+@current
+@done
+echo $seekbar > /sys/module/msm_drm/parameters/kcal_hue
+@done
+core=true
+root=true
+!view
+
+!view
+view=button
+text=全部重置
+@show
+echo true
+@show
+core=true
+root=true
+@click
+echo 255 > /sys/module/msm_drm/parameters/kcal_red
+echo 255 > /sys/module/msm_drm/parameters/kcal_green
+echo 255 > /sys/module/msm_drm/parameters/kcal_blue
+
+echo 255 > /sys/module/msm_drm/parameters/kcal_sat
+echo 255 > /sys/module/msm_drm/parameters/kcal_val
+echo 255 > /sys/module/msm_drm/parameters/kcal_cont
+echo 0 > /sys/module/msm_drm/parameters/kcal_hue
+@click
+
+!view
+!module
